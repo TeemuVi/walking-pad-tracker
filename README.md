@@ -1,4 +1,4 @@
-# Kävelymatto- ja askelseuranta (Walking Pad & Step Tracker)
+# Askelpäiväkirja
 
 Sovelluksen tarkoitus on seurata päivittäistä askeltavoitetta, sekä kuinka se on saavutettu. 
 Sovelluksen avulla käyttäjä voi analysoida itse omaa askeltahtiaan eri nopeuksilla ja seurata tavoitteiden saavuttamista. 
