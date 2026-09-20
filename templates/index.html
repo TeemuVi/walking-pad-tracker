@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Walking Pad Tracker</title>
+</head>
+<body>
+    <h1>Walking Pad Tracker</h1>
+
+    {% if session.username %}
+        <p>User: <strong>{{ session.username }}</strong> | <a href="/logout">Log out</a></p>
+        <hr>
+
+        <h3>Record a New Walk</h3>
+        <form action="/add_walk" method="post">
+            Time (min):<br>
+            <input type="number" name="minutes_walked" required><br><br>
+            Distance (km):<br>
+            <input type="number" step="0.01" name="distance" required><br><br>
+            Steps:<br>
+            <input type="number" name="steps" required><br><br>
+            <input type="submit" value="Add">
+        </form>
+
+        <hr>
+    {% else %}
+        <p> <a href="/login">Log in</a> or <a href="/register">Register</a>.</p>
+        <hr>
+    {% endif %}
+
+    <h3>Walks History</h3>
+    {% if walks %}
+        <table border="1" cellpadding="4">
+            <tr>
+                <th>Date & Time</th>
+                <th>Walker</th>
+                <th>Duration</th>
+                <th>Distance</th>
+                <th>Steps</th>
+                <th>Buttons</th>
+            </tr>
+            {% for walk in walks %}
+            <tr>
+                <td>{{ walk.time_stamp }}</td>
+                <td>{{ walk.username }}</td>
+                <td>{{ walk.minutes_walked }} min</td>
+                <td>{{ walk.distance }} km</td>
+                <td>{{ walk.steps }}</td>
+                <td>
+                    {% if session.user_id == walk.user_id %}
+                    <form action="/delete_walk/{{ walk.id }}" method="post" style="display:inline;">
+                        <input type="submit" value="Delete">
+                    </form>
+                    {% else %}
+                    -
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <p>No walks!</p>
+    {% endif %}
+
+</body>
+</html>
