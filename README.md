@@ -24,18 +24,18 @@ Session voi luokitella seuraavasti:
 Käyttäjät voivat jättää toisilleen motivoivia viestejä sessioihin.
 Sessiota katsoessa voi nähdä kaikki sitä koskevat viestit.
 
-## Välipalautus 2
-Toiminnot:
-- Käyttäjätunnuksen luominen ja sisään kirjautuminen.
-- Käyttäjä pystyy luomaan uuden kävelysession.
-- Käyttäjä pystyy katsomaan sessioita etusivulta.
-- Käyttäjä pystyy poistamaan kävelyitään. 
 
 ## Asennus
 1. Asenna Flask:
+```console
 pip install flask
+```
 2. Alusta tietokanta:
+```console
 python init_db.py
+```
 3. Käynnistä sovellus:
+```console
 flask run
+```
 Avaa selain osoitteeseen http://127.0.0.1:5000.
