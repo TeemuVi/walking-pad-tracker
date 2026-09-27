@@ -28,6 +28,14 @@
     {% endif %}
 
     <h3>Walks History</h3>
+    <form action="/" method="get">
+        <input type="text" name="query" placeholder="Search by username..." value="{{ query }}">
+        <input type="submit" value="Search">
+        {% if query %}
+            <a href="/">Clear</a>
+        {% endif %}
+    </form>
+    <br>
     {% if walks %}
         <table border="1" cellpadding="4">
             <tr>
@@ -47,6 +55,7 @@
                 <td>{{ walk.steps }}</td>
                 <td>
                     {% if session.user_id == walk.user_id %}
+                    <a href="/edit_walk/{{ walk.id }}">Edit</a> |
                     <form action="/delete_walk/{{ walk.id }}" method="post" style="display:inline;">
                         <input type="submit" value="Delete">
                     </form>
